@@ -9,6 +9,48 @@
 
 ![Screenshot](docs/img/AudioManagerScreenCap.png)
 
+```
+bool
+AudioManager::Initialise()
+{
+	FMOD_RESULT result;
+
+	result = FMOD::System_Create(&mp_FMODsystem);      // Create the main system object.
+	if (result != FMOD_OK)
+	{
+		printf("FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
+		exit(-1);
+	}
+
+	result = mp_FMODsystem->init(512, FMOD_INIT_NORMAL, 0);    // Initialize FMOD.
+	if (result != FMOD_OK)
+	{
+		printf("FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
+		exit(-1);
+	}
+	// Player Sound Effects
+	result = mp_FMODsystem->createSound("assets\\soundFX\\SOUNDEFFECT.wav", FMOD_2D, 0, &mp_FMODsound_pShoot);
+	result = mp_FMODsystem->createSound("assets\\soundFX\\SOUNDEFFECT.wav", FMOD_2D, 0, &mp_FMODsound_pReload);
+	result = mp_FMODsystem->createSound("assets\\soundFX\\SOUNDEFFECT.wav", FMOD_2D, 0, &mp_FMODsound_pPickup);
+	result = mp_FMODsystem->createSound("assets\\soundFX\\SOUNDEFFECT.wav", FMOD_2D, 0, &mp_FMODsound_pDeath);
+	// Zombie Sound Effects
+	result = mp_FMODsystem->createSound("assets\\soundFX\\SOUNDEFFECT.wav", FMOD_2D, 0, &mp_FMODsound_zGroan1);
+	result = mp_FMODsystem->createSound("assets\\soundFX\\SOUNDEFFECT.wav", FMOD_2D, 0, &mp_FMODsound_zGroan2);
+	result = mp_FMODsystem->createSound("assets\\soundFX\\SOUNDEFFECT.wav", FMOD_2D, 0, &mp_FMODsound_zAttack);
+	result = mp_FMODsystem->createSound("assets\\soundFX\\SOUNDEFFECT.wav", FMOD_2D, 0, &mp_FMODsound_zDeath);
+
+	// Music by Eric Matyas    www.soundimage.org
+	result = mp_FMODsystem->createStream("assets\\soundFX\\Monster-Street-Fighters.mp3", FMOD_2D | FMOD_LOOP_NORMAL, 0, &mp_FMODsound_music);
+
+	if (result != FMOD_OK)
+	{
+		return(false);
+	}
+
+	return(true);
+}
+```
+
 ## Past Projects
 
 Description	
