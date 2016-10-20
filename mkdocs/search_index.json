@@ -42,7 +42,7 @@
         },
         {
             "location": "/pastprojects/",
-            "text": "Past Projects\n\n\nDescription\n\n\nI began my journey into the games industry as a 3D artist. These are two of the titles I worked on from conception to launch while I was a part of the development team at Outsmart Games.\n\n\nTools:\n\n\nMaya, Unity, Photoshop\n\n\nTasks (Roost Riders):\n\n\nLevel Design, 3D Assets, Texturing, Unity Level Creation\n\n\nTasks (Gopher Launch):\n\n\n3D Assets, Texturing\n\n\nFor:\n\n\nOutsmart Games\n\n\nRole:\n\n\n3D Artist\n\n\nRoost Riders Launch Trailer:\n\n\nyoutu.be/TsgQSHiDxzU\n\n\nGopher Launch Launch Trailer:\n\n\nyoutu.be/fPgOimJGX_Q",
+            "text": "Past Projects\n\n\nDescription\n\n\nI began my journey into the games industry as a 3D artist. These are two of the titles I worked on from conception to launch while I was a part of the development team at Outsmart Games.\n\n\nTools:\n\n\nMaya, Unity, Photoshop\n\n\nTasks (Roost Riders):\n\n\nLevel Design, 3D Assets, Texturing, Unity Level Creation\n\n\nTasks (Gopher Launch):\n\n\n3D Assets, Texturing\n\n\nFor:\n\n\nOutsmart Games\n\n\nRole:\n\n\n3D Artist\n\n\nRoost Riders Launch Trailer:\n\n\n\n\nGopher Launch Launch Trailer:",
             "title": "PastProjects"
         },
         {
@@ -82,12 +82,12 @@
         },
         {
             "location": "/pastprojects/#roost-riders-launch-trailer",
-            "text": "youtu.be/TsgQSHiDxzU",
+            "text": "",
             "title": "Roost Riders Launch Trailer:"
         },
         {
             "location": "/pastprojects/#gopher-launch-launch-trailer",
-            "text": "youtu.be/fPgOimJGX_Q",
+            "text": "",
             "title": "Gopher Launch Launch Trailer:"
         }
     ]

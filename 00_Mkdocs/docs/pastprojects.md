@@ -13,9 +13,9 @@ Outsmart Games
 ###Role:
 3D Artist
 ###Roost Riders Launch Trailer:
-youtu.be/TsgQSHiDxzU
+[![VIDTEXT](http://img.youtube.com/vi/TsgQSHiDxzU/0.jpg)](http://youtu.be/TsgQSHiDxzU)
 ###Gopher Launch Launch Trailer:
-youtu.be/fPgOimJGX_Q
+[![VIDTEXT](http://img.youtube.com/vi/fPgOimJGX_Q/0.jpg)](http://youtu.be/fPgOimJGX_Q)
 
 ![Screenshot](img/RoostRidersTitle.jpg)
 ![Screenshot](img/RoostRiders_01.jpg)![Screenshot](img/RoostRiders_02.jpg)![Screenshot](img/RoostRiders_03.jpg)
