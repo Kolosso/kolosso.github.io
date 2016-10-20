@@ -205,4 +205,4 @@ youtu.be/fPgOimJGX_Q
 
 ![Screenshot](img/RoostRidersTitle.jpg)
 ![Screenshot](img/RoostRiders_01.jpg)![Screenshot](img/RoostRiders_02.jpg)![Screenshot](img/RoostRiders_03.jpg)
-![Screenshot](img/RoostRiders_04.jpg)![Screenshot](img/RoostRiders_05.jpg)
+![Screenshot](img/RoostRiders_04.png)![Screenshot](img/RoostRiders_05.png)
