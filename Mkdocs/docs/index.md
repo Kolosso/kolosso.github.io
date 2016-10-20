@@ -7,7 +7,7 @@
 
 ## AudioManager - FMOD
 
-![Screenshot](docs/img/AudioManagerScreenCap.png)
+![Screenshot](img/AudioManagerScreenCap.png)
 
 ```
 bool
