@@ -1,15 +1,42 @@
 # Welcome!
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs help` - Print this help message.
+Game programming portfolio site
 
 ## AudioManager - FMOD
 
 ![Screenshot](img/AudioManagerScreenCap.png)
 
 ```
+// Local includes:
+#include "AudioManager.h"
+
+// Library includes:
+#include <iostream>
+
+AudioManager::AudioManager()
+: mp_FMODsystem(0)
+, mp_FMODchannel(0)
+, mp_FMODchannelMusic(0)
+, mp_FMODsound_music(nullptr)
+, mp_FMODsound_pShoot(0)
+, mp_FMODsound_pReload(0)
+, mp_FMODsound_pPickup(0)
+, mp_FMODsound_pDeath(0)
+, mp_FMODsound_zGroan1(0)
+, mp_FMODsound_zGroan2(0)
+, mp_FMODsound_zAttack(0)
+, mp_FMODsound_zDeath(0)
+, volume(0.7f)
+, volumeMusic(volume / 3)
+, muted(false)
+{
+}
+
+AudioManager::~AudioManager()
+{
+	mp_FMODsystem->release();
+}
+
 bool
 AudioManager::Initialise()
 {
@@ -49,6 +76,112 @@ AudioManager::Initialise()
 
 	return(true);
 }
+
+void
+AudioManager::Update()
+{
+	mp_FMODsystem->update();
+}
+
+// Two methods to play the player / zombie sound effects
+void
+AudioManager::PlaySound(soundEffectsPlayer _SoundEffect)
+{
+	if (!muted)
+	{
+		if (_SoundEffect == se_pSHOOT)
+		{
+			mp_FMODsystem->playSound(mp_FMODsound_pShoot, 0, 0, &mp_FMODchannel);
+		}
+		if (_SoundEffect == se_pRELOAD)
+		{
+			mp_FMODsystem->playSound(mp_FMODsound_pReload, 0, 0, &mp_FMODchannel);
+		}
+		if (_SoundEffect == se_pPICKUP)
+		{
+			mp_FMODsystem->playSound(mp_FMODsound_pPickup, 0, 0, &mp_FMODchannel);
+		}
+		if (_SoundEffect == se_pDEATH)
+		{
+			mp_FMODsystem->playSound(mp_FMODsound_pDeath, 0, 0, &mp_FMODchannel);
+		}
+	}
+	VolumeControl();
+}
+void
+AudioManager::PlaySound(soundEffectsZombie _SoundEffect)
+{
+	if (!muted)
+	{
+		if (_SoundEffect == se_zGROAN1)
+		{
+			mp_FMODsystem->playSound(mp_FMODsound_zGroan1, 0, 0, &mp_FMODchannel);
+		}
+		if (_SoundEffect == se_zGROAN2)
+		{
+			mp_FMODsystem->playSound(mp_FMODsound_zGroan2, 0, 0, &mp_FMODchannel);
+		}
+		if (_SoundEffect == se_zATTACK)
+		{
+			mp_FMODsystem->playSound(mp_FMODsound_zAttack, 0, 0, &mp_FMODchannel);
+		}
+		if (_SoundEffect == se_zDEATH)
+		{
+			mp_FMODsystem->playSound(mp_FMODsound_zDeath, 0, 0, &mp_FMODchannel);
+		}
+	}
+	VolumeControl();
+}
+
+void
+AudioManager::PlayMusic()
+{
+	mp_FMODsystem->playSound(mp_FMODsound_music, 0, 0, &mp_FMODchannelMusic);
+	mp_FMODchannelMusic->setVolume(volumeMusic);
+
+}
+
+void
+AudioManager::VolumeUp()
+{
+	volume += 0.1f;
+	volumeMusic = volume / 3;
+	VolumeControl();
+}
+
+void
+AudioManager::VolumeDown()
+{
+	volume -= 0.1f;
+	volumeMusic = volume / 3;
+	VolumeControl();
+}
+
+void
+AudioManager::VolumeControl()
+{
+	if (volume <= 0.0f)
+	{
+		muted = true;
+		volume = 0.0f;
+		mp_FMODchannel->setMute(muted);
+		mp_FMODchannel->setVolume(volume);
+		mp_FMODchannelMusic->setMute(muted);
+		mp_FMODchannelMusic->setVolume(volumeMusic);
+	}
+	else
+	{
+		muted = false;
+		if (volume > 1.0f)
+		{
+			volume = 1.0f;
+		}
+		mp_FMODchannel->setMute(muted);
+		mp_FMODchannel->setVolume(volume);
+		mp_FMODchannelMusic->setMute(muted);
+		mp_FMODchannelMusic->setVolume(volumeMusic);
+	}
+}
 ```
 
 ## Past Projects
@@ -70,6 +203,6 @@ youtu.be/TsgQSHiDxzU
 Gopher Launch Launch Trailer:
 youtu.be/fPgOimJGX_Q
 
-![Screenshot](imgs/RoostRidersTitle.jpg)
-![Screenshot](imgs/RoostRiders_01.jpg)![Screenshot](imgs/RoostRiders_02.jpg)![Screenshot](imgs/RoostRiders_03.jpg)
-![Screenshot](imgs/RoostRiders_04.jpg)![Screenshot](imgs/RoostRiders_05.jpg)
+![Screenshot](img/RoostRidersTitle.jpg)
+![Screenshot](img/RoostRiders_01.jpg)![Screenshot](img/RoostRiders_02.jpg)![Screenshot](img/RoostRiders_03.jpg)
+![Screenshot](img/RoostRiders_04.jpg)![Screenshot](img/RoostRiders_05.jpg)
