@@ -1,0 +1,29 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome!\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nAudioManager - FMOD\n\n\n\n\nbool\nAudioManager::Initialise()\n{\n    FMOD_RESULT result;\n\n    result = FMOD::System_Create(&mp_FMODsystem);      // Create the main system object.\n    if (result != FMOD_OK)\n    {\n        printf(\"FMOD error! (%d) %s\\n\", result, FMOD_ErrorString(result));\n        exit(-1);\n    }\n\n    result = mp_FMODsystem->init(512, FMOD_INIT_NORMAL, 0);    // Initialize FMOD.\n    if (result != FMOD_OK)\n    {\n        printf(\"FMOD error! (%d) %s\\n\", result, FMOD_ErrorString(result));\n        exit(-1);\n    }\n    // Player Sound Effects\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_pShoot);\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_pReload);\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_pPickup);\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_pDeath);\n    // Zombie Sound Effects\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_zGroan1);\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_zGroan2);\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_zAttack);\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_zDeath);\n\n    // Music by Eric Matyas    www.soundimage.org\n    result = mp_FMODsystem->createStream(\"assets\\\\soundFX\\\\Monster-Street-Fighters.mp3\", FMOD_2D | FMOD_LOOP_NORMAL, 0, &mp_FMODsound_music);\n\n    if (result != FMOD_OK)\n    {\n        return(false);\n    }\n\n    return(true);\n}\n\n\n\n\nPast Projects\n\n\nDescription \nI began my journey into the games industry as a 3D artist. These are two of the titles I worked on from conception to launch while I was a part of the development team at Outsmart Games.\nTools:\nMaya, Unity, Photoshop\nTasks (Roost Riders):\nLevel Design, 3D Assets, Texturing, Unity Level Creation\nTasks (Gopher Launch):\n3D Assets, Texturing\nFor:\nOutsmart Games\nRole:\n3D Artist\nRoost Riders Launch Trailer:\nyoutu.be/TsgQSHiDxzU\nGopher Launch Launch Trailer:\nyoutu.be/fPgOimJGX_Q",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome",
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.",
+            "title": "Welcome!"
+        },
+        {
+            "location": "/#audiomanager-fmod",
+            "text": "bool\nAudioManager::Initialise()\n{\n    FMOD_RESULT result;\n\n    result = FMOD::System_Create(&mp_FMODsystem);      // Create the main system object.\n    if (result != FMOD_OK)\n    {\n        printf(\"FMOD error! (%d) %s\\n\", result, FMOD_ErrorString(result));\n        exit(-1);\n    }\n\n    result = mp_FMODsystem->init(512, FMOD_INIT_NORMAL, 0);    // Initialize FMOD.\n    if (result != FMOD_OK)\n    {\n        printf(\"FMOD error! (%d) %s\\n\", result, FMOD_ErrorString(result));\n        exit(-1);\n    }\n    // Player Sound Effects\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_pShoot);\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_pReload);\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_pPickup);\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_pDeath);\n    // Zombie Sound Effects\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_zGroan1);\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_zGroan2);\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_zAttack);\n    result = mp_FMODsystem->createSound(\"assets\\\\soundFX\\\\SOUNDEFFECT.wav\", FMOD_2D, 0, &mp_FMODsound_zDeath);\n\n    // Music by Eric Matyas    www.soundimage.org\n    result = mp_FMODsystem->createStream(\"assets\\\\soundFX\\\\Monster-Street-Fighters.mp3\", FMOD_2D | FMOD_LOOP_NORMAL, 0, &mp_FMODsound_music);\n\n    if (result != FMOD_OK)\n    {\n        return(false);\n    }\n\n    return(true);\n}",
+            "title": "AudioManager - FMOD"
+        },
+        {
+            "location": "/#past-projects",
+            "text": "Description \nI began my journey into the games industry as a 3D artist. These are two of the titles I worked on from conception to launch while I was a part of the development team at Outsmart Games.\nTools:\nMaya, Unity, Photoshop\nTasks (Roost Riders):\nLevel Design, 3D Assets, Texturing, Unity Level Creation\nTasks (Gopher Launch):\n3D Assets, Texturing\nFor:\nOutsmart Games\nRole:\n3D Artist\nRoost Riders Launch Trailer:\nyoutu.be/TsgQSHiDxzU\nGopher Launch Launch Trailer:\nyoutu.be/fPgOimJGX_Q",
+            "title": "Past Projects"
+        },
+        {
+            "location": "/about/",
+            "text": "",
+            "title": "About"
+        }
+    ]
+}
