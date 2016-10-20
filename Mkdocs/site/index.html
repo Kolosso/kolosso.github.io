@@ -112,15 +112,40 @@
             <div class="section">
               
                 <h1 id="welcome">Welcome!</h1>
-<ul>
-<li><code>mkdocs new [dir-name]</code> - Create a new project.</li>
-<li><code>mkdocs serve</code> - Start the live-reloading docs server.</li>
-<li><code>mkdocs build</code> - Build the documentation site.</li>
-<li><code>mkdocs help</code> - Print this help message.</li>
-</ul>
+<p>Game programming portfolio site</p>
 <h2 id="audiomanager-fmod">AudioManager - FMOD</h2>
 <p><img alt="Screenshot" src="./img/AudioManagerScreenCap.png" /></p>
-<pre><code>bool
+<pre><code>// Local includes:
+#include &quot;AudioManager.h&quot;
+
+// Library includes:
+#include &lt;iostream&gt;
+
+AudioManager::AudioManager()
+: mp_FMODsystem(0)
+, mp_FMODchannel(0)
+, mp_FMODchannelMusic(0)
+, mp_FMODsound_music(nullptr)
+, mp_FMODsound_pShoot(0)
+, mp_FMODsound_pReload(0)
+, mp_FMODsound_pPickup(0)
+, mp_FMODsound_pDeath(0)
+, mp_FMODsound_zGroan1(0)
+, mp_FMODsound_zGroan2(0)
+, mp_FMODsound_zAttack(0)
+, mp_FMODsound_zDeath(0)
+, volume(0.7f)
+, volumeMusic(volume / 3)
+, muted(false)
+{
+}
+
+AudioManager::~AudioManager()
+{
+    mp_FMODsystem-&gt;release();
+}
+
+bool
 AudioManager::Initialise()
 {
     FMOD_RESULT result;
@@ -159,6 +184,112 @@ AudioManager::Initialise()
 
     return(true);
 }
+
+void
+AudioManager::Update()
+{
+    mp_FMODsystem-&gt;update();
+}
+
+// Two methods to play the player / zombie sound effects
+void
+AudioManager::PlaySound(soundEffectsPlayer _SoundEffect)
+{
+    if (!muted)
+    {
+        if (_SoundEffect == se_pSHOOT)
+        {
+            mp_FMODsystem-&gt;playSound(mp_FMODsound_pShoot, 0, 0, &amp;mp_FMODchannel);
+        }
+        if (_SoundEffect == se_pRELOAD)
+        {
+            mp_FMODsystem-&gt;playSound(mp_FMODsound_pReload, 0, 0, &amp;mp_FMODchannel);
+        }
+        if (_SoundEffect == se_pPICKUP)
+        {
+            mp_FMODsystem-&gt;playSound(mp_FMODsound_pPickup, 0, 0, &amp;mp_FMODchannel);
+        }
+        if (_SoundEffect == se_pDEATH)
+        {
+            mp_FMODsystem-&gt;playSound(mp_FMODsound_pDeath, 0, 0, &amp;mp_FMODchannel);
+        }
+    }
+    VolumeControl();
+}
+void
+AudioManager::PlaySound(soundEffectsZombie _SoundEffect)
+{
+    if (!muted)
+    {
+        if (_SoundEffect == se_zGROAN1)
+        {
+            mp_FMODsystem-&gt;playSound(mp_FMODsound_zGroan1, 0, 0, &amp;mp_FMODchannel);
+        }
+        if (_SoundEffect == se_zGROAN2)
+        {
+            mp_FMODsystem-&gt;playSound(mp_FMODsound_zGroan2, 0, 0, &amp;mp_FMODchannel);
+        }
+        if (_SoundEffect == se_zATTACK)
+        {
+            mp_FMODsystem-&gt;playSound(mp_FMODsound_zAttack, 0, 0, &amp;mp_FMODchannel);
+        }
+        if (_SoundEffect == se_zDEATH)
+        {
+            mp_FMODsystem-&gt;playSound(mp_FMODsound_zDeath, 0, 0, &amp;mp_FMODchannel);
+        }
+    }
+    VolumeControl();
+}
+
+void
+AudioManager::PlayMusic()
+{
+    mp_FMODsystem-&gt;playSound(mp_FMODsound_music, 0, 0, &amp;mp_FMODchannelMusic);
+    mp_FMODchannelMusic-&gt;setVolume(volumeMusic);
+
+}
+
+void
+AudioManager::VolumeUp()
+{
+    volume += 0.1f;
+    volumeMusic = volume / 3;
+    VolumeControl();
+}
+
+void
+AudioManager::VolumeDown()
+{
+    volume -= 0.1f;
+    volumeMusic = volume / 3;
+    VolumeControl();
+}
+
+void
+AudioManager::VolumeControl()
+{
+    if (volume &lt;= 0.0f)
+    {
+        muted = true;
+        volume = 0.0f;
+        mp_FMODchannel-&gt;setMute(muted);
+        mp_FMODchannel-&gt;setVolume(volume);
+        mp_FMODchannelMusic-&gt;setMute(muted);
+        mp_FMODchannelMusic-&gt;setVolume(volumeMusic);
+    }
+    else
+    {
+        muted = false;
+        if (volume &gt; 1.0f)
+        {
+            volume = 1.0f;
+        }
+        mp_FMODchannel-&gt;setMute(muted);
+        mp_FMODchannel-&gt;setVolume(volume);
+        mp_FMODchannelMusic-&gt;setMute(muted);
+        mp_FMODchannelMusic-&gt;setVolume(volumeMusic);
+    }
+}
 </code></pre>
 
 <h2 id="past-projects">Past Projects</h2>
@@ -178,9 +309,9 @@ Roost Riders Launch Trailer:
 youtu.be/TsgQSHiDxzU
 Gopher Launch Launch Trailer:
 youtu.be/fPgOimJGX_Q</p>
-<p><img alt="Screenshot" src="./imgs/RoostRidersTitle.jpg" />
-<img alt="Screenshot" src="./imgs/RoostRiders_01.jpg" /><img alt="Screenshot" src="./imgs/RoostRiders_02.jpg" /><img alt="Screenshot" src="./imgs/RoostRiders_03.jpg" />
-<img alt="Screenshot" src="./imgs/RoostRiders_04.jpg" /><img alt="Screenshot" src="./imgs/RoostRiders_05.jpg" /></p>
+<p><img alt="Screenshot" src="./img/RoostRidersTitle.jpg" />
+<img alt="Screenshot" src="./img/RoostRiders_01.jpg" /><img alt="Screenshot" src="./img/RoostRiders_02.jpg" /><img alt="Screenshot" src="./img/RoostRiders_03.jpg" />
+<img alt="Screenshot" src="./img/RoostRiders_04.jpg" /><img alt="Screenshot" src="./img/RoostRiders_05.jpg" /></p>
               
             </div>
           </div>
@@ -226,5 +357,5 @@ youtu.be/fPgOimJGX_Q</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-10-20 14:16:44.880323
+Build Date UTC : 2016-10-20 14:20:38.720544
 -->
