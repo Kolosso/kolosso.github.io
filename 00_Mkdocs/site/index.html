@@ -71,7 +71,25 @@
                 
                 
                     <li >
-                        <a href="about/">About</a>
+                        <a href="levelmanager/">LevelManager</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="audiomanager/">AudioManager</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="artificialintelligence/">ArtificalIntelligence</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="pastprojects/">PastProjects</a>
                     </li>
                 
                 
@@ -91,7 +109,7 @@
                         </a>
                     </li>
                     <li >
-                        <a rel="prev" href="about/">
+                        <a rel="prev" href="levelmanager/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -109,218 +127,13 @@
     
         <li class="first-level active"><a href="#welcome">Welcome!</a></li>
         
-            <li class="second-level"><a href="#audiomanager-fmod">AudioManager - FMOD</a></li>
-            
-        
-            <li class="second-level"><a href="#past-projects">Past Projects</a></li>
-            
-        
     
     </ul>
 </div></div>
         <div class="col-md-9" role="main">
 
 <h1 id="welcome">Welcome!</h1>
-<p>Game programming portfolio site</p>
-<h2 id="audiomanager-fmod">AudioManager - FMOD</h2>
-<p><img alt="Screenshot" src="./img/AudioManagerScreenCap.png" /></p>
-<pre><code>// Local includes:
-#include &quot;AudioManager.h&quot;
-
-// Library includes:
-#include &lt;iostream&gt;
-
-AudioManager::AudioManager()
-: mp_FMODsystem(0)
-, mp_FMODchannel(0)
-, mp_FMODchannelMusic(0)
-, mp_FMODsound_music(nullptr)
-, mp_FMODsound_pShoot(0)
-, mp_FMODsound_pReload(0)
-, mp_FMODsound_pPickup(0)
-, mp_FMODsound_pDeath(0)
-, mp_FMODsound_zGroan1(0)
-, mp_FMODsound_zGroan2(0)
-, mp_FMODsound_zAttack(0)
-, mp_FMODsound_zDeath(0)
-, volume(0.7f)
-, volumeMusic(volume / 3)
-, muted(false)
-{
-}
-
-AudioManager::~AudioManager()
-{
-    mp_FMODsystem-&gt;release();
-}
-
-bool
-AudioManager::Initialise()
-{
-    FMOD_RESULT result;
-
-    result = FMOD::System_Create(&amp;mp_FMODsystem);      // Create the main system object.
-    if (result != FMOD_OK)
-    {
-        printf(&quot;FMOD error! (%d) %s\n&quot;, result, FMOD_ErrorString(result));
-        exit(-1);
-    }
-
-    result = mp_FMODsystem-&gt;init(512, FMOD_INIT_NORMAL, 0);    // Initialize FMOD.
-    if (result != FMOD_OK)
-    {
-        printf(&quot;FMOD error! (%d) %s\n&quot;, result, FMOD_ErrorString(result));
-        exit(-1);
-    }
-    // Player Sound Effects
-    result = mp_FMODsystem-&gt;createSound(&quot;assets\\soundFX\\SOUNDEFFECT.wav&quot;, FMOD_2D, 0, &amp;mp_FMODsound_pShoot);
-    result = mp_FMODsystem-&gt;createSound(&quot;assets\\soundFX\\SOUNDEFFECT.wav&quot;, FMOD_2D, 0, &amp;mp_FMODsound_pReload);
-    result = mp_FMODsystem-&gt;createSound(&quot;assets\\soundFX\\SOUNDEFFECT.wav&quot;, FMOD_2D, 0, &amp;mp_FMODsound_pPickup);
-    result = mp_FMODsystem-&gt;createSound(&quot;assets\\soundFX\\SOUNDEFFECT.wav&quot;, FMOD_2D, 0, &amp;mp_FMODsound_pDeath);
-    // Zombie Sound Effects
-    result = mp_FMODsystem-&gt;createSound(&quot;assets\\soundFX\\SOUNDEFFECT.wav&quot;, FMOD_2D, 0, &amp;mp_FMODsound_zGroan1);
-    result = mp_FMODsystem-&gt;createSound(&quot;assets\\soundFX\\SOUNDEFFECT.wav&quot;, FMOD_2D, 0, &amp;mp_FMODsound_zGroan2);
-    result = mp_FMODsystem-&gt;createSound(&quot;assets\\soundFX\\SOUNDEFFECT.wav&quot;, FMOD_2D, 0, &amp;mp_FMODsound_zAttack);
-    result = mp_FMODsystem-&gt;createSound(&quot;assets\\soundFX\\SOUNDEFFECT.wav&quot;, FMOD_2D, 0, &amp;mp_FMODsound_zDeath);
-
-    // Music by Eric Matyas    www.soundimage.org
-    result = mp_FMODsystem-&gt;createStream(&quot;assets\\soundFX\\Monster-Street-Fighters.mp3&quot;, FMOD_2D | FMOD_LOOP_NORMAL, 0, &amp;mp_FMODsound_music);
-
-    if (result != FMOD_OK)
-    {
-        return(false);
-    }
-
-    return(true);
-}
-
-void
-AudioManager::Update()
-{
-    mp_FMODsystem-&gt;update();
-}
-
-// Two methods to play the player / zombie sound effects
-void
-AudioManager::PlaySound(soundEffectsPlayer _SoundEffect)
-{
-    if (!muted)
-    {
-        if (_SoundEffect == se_pSHOOT)
-        {
-            mp_FMODsystem-&gt;playSound(mp_FMODsound_pShoot, 0, 0, &amp;mp_FMODchannel);
-        }
-        if (_SoundEffect == se_pRELOAD)
-        {
-            mp_FMODsystem-&gt;playSound(mp_FMODsound_pReload, 0, 0, &amp;mp_FMODchannel);
-        }
-        if (_SoundEffect == se_pPICKUP)
-        {
-            mp_FMODsystem-&gt;playSound(mp_FMODsound_pPickup, 0, 0, &amp;mp_FMODchannel);
-        }
-        if (_SoundEffect == se_pDEATH)
-        {
-            mp_FMODsystem-&gt;playSound(mp_FMODsound_pDeath, 0, 0, &amp;mp_FMODchannel);
-        }
-    }
-    VolumeControl();
-}
-void
-AudioManager::PlaySound(soundEffectsZombie _SoundEffect)
-{
-    if (!muted)
-    {
-        if (_SoundEffect == se_zGROAN1)
-        {
-            mp_FMODsystem-&gt;playSound(mp_FMODsound_zGroan1, 0, 0, &amp;mp_FMODchannel);
-        }
-        if (_SoundEffect == se_zGROAN2)
-        {
-            mp_FMODsystem-&gt;playSound(mp_FMODsound_zGroan2, 0, 0, &amp;mp_FMODchannel);
-        }
-        if (_SoundEffect == se_zATTACK)
-        {
-            mp_FMODsystem-&gt;playSound(mp_FMODsound_zAttack, 0, 0, &amp;mp_FMODchannel);
-        }
-        if (_SoundEffect == se_zDEATH)
-        {
-            mp_FMODsystem-&gt;playSound(mp_FMODsound_zDeath, 0, 0, &amp;mp_FMODchannel);
-        }
-    }
-    VolumeControl();
-}
-
-void
-AudioManager::PlayMusic()
-{
-    mp_FMODsystem-&gt;playSound(mp_FMODsound_music, 0, 0, &amp;mp_FMODchannelMusic);
-    mp_FMODchannelMusic-&gt;setVolume(volumeMusic);
-
-}
-
-void
-AudioManager::VolumeUp()
-{
-    volume += 0.1f;
-    volumeMusic = volume / 3;
-    VolumeControl();
-}
-
-void
-AudioManager::VolumeDown()
-{
-    volume -= 0.1f;
-    volumeMusic = volume / 3;
-    VolumeControl();
-}
-
-void
-AudioManager::VolumeControl()
-{
-    if (volume &lt;= 0.0f)
-    {
-        muted = true;
-        volume = 0.0f;
-        mp_FMODchannel-&gt;setMute(muted);
-        mp_FMODchannel-&gt;setVolume(volume);
-        mp_FMODchannelMusic-&gt;setMute(muted);
-        mp_FMODchannelMusic-&gt;setVolume(volumeMusic);
-    }
-    else
-    {
-        muted = false;
-        if (volume &gt; 1.0f)
-        {
-            volume = 1.0f;
-        }
-        mp_FMODchannel-&gt;setMute(muted);
-        mp_FMODchannel-&gt;setVolume(volume);
-        mp_FMODchannelMusic-&gt;setMute(muted);
-        mp_FMODchannelMusic-&gt;setVolume(volumeMusic);
-    }
-}
-</code></pre>
-
-<h2 id="past-projects">Past Projects</h2>
-<p>Description 
-I began my journey into the games industry as a 3D artist. These are two of the titles I worked on from conception to launch while I was a part of the development team at Outsmart Games.
-Tools:
-Maya, Unity, Photoshop
-Tasks (Roost Riders):
-Level Design, 3D Assets, Texturing, Unity Level Creation
-Tasks (Gopher Launch):
-3D Assets, Texturing
-For:
-Outsmart Games
-Role:
-3D Artist
-Roost Riders Launch Trailer:
-youtu.be/TsgQSHiDxzU
-Gopher Launch Launch Trailer:
-youtu.be/fPgOimJGX_Q</p>
-<p><img alt="Screenshot" src="./img/RoostRidersTitle.jpg" />
-<img alt="Screenshot" src="./img/RoostRiders_01.jpg" /><img alt="Screenshot" src="./img/RoostRiders_02.jpg" /><img alt="Screenshot" src="./img/RoostRiders_03.jpg" />
-<img alt="Screenshot" src="./img/RoostRiders_04.png" /><img alt="Screenshot" src="./img/RoostRiders_05.png" /></p></div>
+<p>Game programming portfolio site</p></div>
         
     </div>
 
@@ -373,5 +186,5 @@ youtu.be/fPgOimJGX_Q</p>
 
 <!--
 MkDocs version : 0.15.3
-Build Date UTC : 2016-10-20 14:37:42.909269
+Build Date UTC : 2016-10-20 22:15:18.151292
 -->

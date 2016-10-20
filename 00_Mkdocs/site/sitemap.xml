@@ -11,7 +11,31 @@
 
     
     <url>
-     <loc>None/about/</loc>
+     <loc>None/levelmanager/</loc>
+     <lastmod>2016-10-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/audiomanager/</loc>
+     <lastmod>2016-10-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/artificialintelligence/</loc>
+     <lastmod>2016-10-21</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>None/pastprojects/</loc>
      <lastmod>2016-10-21</lastmod>
      <changefreq>daily</changefreq>
     </url>

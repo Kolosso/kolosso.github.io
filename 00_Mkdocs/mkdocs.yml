@@ -1,5 +1,8 @@
 site_name: Game Programming - Portfolio
 pages:
 - Home: index.md
-- About: about.md
+- LevelManager: levelmanager.md
+- AudioManager: audiomanager.md
+- ArtificalIntelligence: artificialintelligence.md
+- PastProjects: pastprojects.md
 theme: cinder
