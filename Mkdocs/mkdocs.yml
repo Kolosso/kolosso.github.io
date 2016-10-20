@@ -2,4 +2,3 @@ site_name: Game Programming - Portfolio
 pages:
 - Home: index.md
 - About: about.md
-theme: readthedocs
