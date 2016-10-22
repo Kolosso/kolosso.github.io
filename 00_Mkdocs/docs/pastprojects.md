@@ -1,6 +1,7 @@
 # Past Projects
 
-##Description	
+##Details
+###Description	
 I began my journey into the games industry as a 3D artist. These are two of the titles I worked on from conception to launch while I was a part of the development team at Outsmart Games.
 ###Tools
 Maya, Unity, Photoshop
