@@ -6,7 +6,9 @@ The Level Manager is a class I put together to help build grid based levels quic
 A text document holds the data to be read in by the game. Working with Excel a document, a level is created by entering single characters into cells that represent different tile types that the Level Manager will create.
 The Excel documents visual layout assists with giving a representation for the level layout early on.
 #### Level Manager : Excel Document
-![LevelManagerExcel](img/LevelManagerExcel.png)
+
+![Screenshot](img/LevelManagerExcel.png)
+
 #### Level Manager : Code
 ```
 // This includes:
