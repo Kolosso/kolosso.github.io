@@ -12,9 +12,8 @@ Box2D was also used for the first time. I later found that I had made an error i
 This had no impact on my game as all sprites were the same size and therefore offset with their physics body by the same margin.
 
 [![Download](img/Download_Button_SnD.png)](dl/Smash n' Dash.zip)
-![Screenshot](img/GopherLaunchTitle.jpg)
+
 ![Screenshot](img/SmashN'Dash.png)
-![Screenshot](img/GopherLaunchTitle.jpg)
 
 ## Team Game Project
 ### The Second to Last of Us
@@ -22,6 +21,5 @@ The Second to Last of Us allowed me to improve upon what I had learnt during pro
 Box2D position was also factored in correctly. Our assets are of different sizes and not always a magic number. Therefore they would have been noticably broken if implemented in the incorrect manner that was used in Smash n' Dash.
 
 [![Download](img/Download_Button_TStLoU.png)](dl/The Second to Last of Us.zip)
-![Screenshot](img/GopherLaunchTitle.jpg)
+
 ![Screenshot](img/TheSecondToLastOfUs.png)
-![Screenshot](img/GopherLaunchTitle.jpg)
