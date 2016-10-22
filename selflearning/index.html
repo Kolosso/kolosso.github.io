@@ -17,6 +17,7 @@
     <link href="../css/base.css" rel="stylesheet">
     <link href="../css/cinder.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/highlight.css">
+	<link href="http://vjs.zencdn.net/c/video-js.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -25,6 +26,7 @@
         <![endif]-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
+	<script src="http://vjs.zencdn.net/c/video.js"></script>
     <script>
     WebFont.load({
         google: {
@@ -127,7 +129,10 @@
         <div class="col-md-9" role="main">
 
 <h1 id="self-learning">Self Learning</h1>
-<p><iframe width="800" height="600" src="../vid/Assignment01_Gameplay.flv" frameborder="0" allowfullscreen></iframe></p></div>
+<p><video id="video1" class="video-js vjs-default-skin" width="800" height="600"
+        data-setup='{"controls" : true, "autoplay" : true, "preload" : "auto"}'>
+        <source src="../vid/Assignment01_Gameplay.flv" type="video/x-flv">
+    </video></p></div>
         
     </div>
 
