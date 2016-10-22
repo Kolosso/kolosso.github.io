@@ -1,8 +1,7 @@
 site_name: Game Programming - Portfolio
 pages:
 - Home: index.md
-- LevelManager: levelmanager.md
-- AudioManager: audiomanager.md
-- ArtificalIntelligence: artificialintelligence.md
-- PastProjects: pastprojects.md
+- University Projects: universityprojects.md
+- Self Learning: selflearning.md
+- Past Projects: pastprojects.md
 theme: cinder
