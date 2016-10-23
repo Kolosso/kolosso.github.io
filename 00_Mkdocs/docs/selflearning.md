@@ -239,6 +239,7 @@ Tile::box2DBodyCreate(b2World* gameWorld, bool collision, float mf_spriteWidth, 
 	}
 }
 ```
+(Box2D, n.d.)
 
 ### FMOD
 An Audio Manager class was created to handle my game sounds while working on my university projects.
@@ -423,6 +424,7 @@ AudioManager::VolumeControl()
 	}
 }
 ```
+(FMOD, n.d.)
 
 ## AI
 
