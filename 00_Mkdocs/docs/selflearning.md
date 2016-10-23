@@ -425,3 +425,9 @@ AudioManager::VolumeControl()
 }
 ```
 (FMOD, n.d.)
+
+## References
+
+* Box2D. (n.d.). Retrieved October 22, 2016, from [http://box2d.org/](http://box2d.org/)
+
+* FMOD. (n.d.). Retrieved October 22, 2016, from [http://www.fmod.org/](http://box2d.org/)

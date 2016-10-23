@@ -63,3 +63,9 @@ Screenshots from final game marketing.
 First pass grey box levels I created as a proof of concept during the teams preproduction stage.
 
 ![Screenshot](img/Golfing_Planets_Concept01.jpg)![Screenshot](img/Golfing_Planets_Concept02.jpg)
+
+## References
+
+* Outsmart Games. (n.d.). Gopher Launch. Retrieved October 22, 2016, from [http://www.outsmartgames.com/gopherlaunch/](http://www.outsmartgames.com/gopherlaunch/)
+
+* Outsmart Games. (n.d.). Roost Riders. Retrieved October 22, 2016, from [http://www.outsmartgames.com/roostriders/](http://www.outsmartgames.com/roostriders/)

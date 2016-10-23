@@ -36,3 +36,9 @@ I am still uncertain about the efficiency of this method and given the opportuni
 * [TDD - The Second to Last of Us](dl/TDD - TheSecondToLastOfUs.pdf) (Frewen, Hoon Jho, & Pike, n.d.)
 
 ![Screenshot](img/TheSecondToLastOfUs.png)
+
+## References
+
+* AUT. (n.d.). GP2DFramework. Retrieved October 22, 2016, from [https://blackboard.aut.ac.nz/bbcswebdav/pid-3865534-dt-content-rid-7060285_4/xid-7060285_4](https://blackboard.aut.ac.nz/bbcswebdav/pid-3865534-dt-content-rid-7060285_4/xid-7060285_4)
+
+* Frewen, A., Hoon Jho, S., & Pike, A. (n.d.). The Second to Last of Us. Retrieved from [https://github.com/Kolosso/The-Second-to-Last-of-Us](https://github.com/Kolosso/The-Second-to-Last-of-Us)
