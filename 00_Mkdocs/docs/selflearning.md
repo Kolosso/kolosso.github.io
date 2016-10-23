@@ -425,7 +425,3 @@ AudioManager::VolumeControl()
 }
 ```
 (FMOD, n.d.)
-
-## AI
-
-#### AI : Code
